@@ -1,7 +1,7 @@
 /*
  * Filename: ListItr.h
  * Description: ListItr class definition
- */
+ *
 #ifndef LISTITR_H
 #define LISTITR_H
 

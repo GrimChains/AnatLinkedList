@@ -7,7 +7,8 @@
 
 // needed because NULL is part of std namespace
 #include <iostream>
-#include "ListItr.h"
+//#include "ListItr.h"
+#include "ListItr.cpp"
 using namespace std;
 
 class ListItr;
@@ -15,6 +16,8 @@ class ListItr;
 class ListNode {
 public:
     ListNode();	//Constructor
+    ListNode(int x);
+    ~ListNode();
 
 private:
     int value;

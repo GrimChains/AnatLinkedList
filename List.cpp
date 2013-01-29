@@ -4,9 +4,6 @@
 #include <iostream>
 using namespace std;
 
-//class ListItr;
-//class ListNode;
-
 List::List(){
   head = new ListNode();
   tail = new ListNode();
@@ -54,20 +51,20 @@ void List:: makeEmpty(){
 }
 
 ListItr List::find (int x){
-  ListIter *temp = new ListIter(head);
-  while(temp->retrieve() !=x && !temp->IsPastEnd()){
-    temp->moveForward;
+  ListItr *temp = new ListItr(head);
+  while(temp->retrieve() !=x && !temp->isPastEnd()){
+    temp->moveForward();
   }
-  if(isPastEnd())
+  if(temp->isPastEnd())
     return NULL;
   else
     return *temp;
 }
 
 void List::remove (int x){
-  ListIterator temp = find(x);
-  temp->current->previous->next= temp.current->next;
-  temp ->current->next->previous = temp.current->previous;
+  ListItr temp = find(x);
+  temp.current->previous->next= temp.current->next;
+  temp.current->next->previous = temp.current->previous;
   temp.current->previous ==NULL;
   temp.current->previous==NULL;
   delete temp.current;
@@ -75,22 +72,26 @@ void List::remove (int x){
 
 ListItr List::first(){
   ListItr *temp;
-  temp = new ListIter(head);
-  temp->moveForward;
-  if(isPastEnd()) return NULL;
-  else return *temp; 
+  temp = new ListItr(head);
+  temp->moveForward();
+  if(temp->isPastEnd()){
+    return NULL;
+  }
+  else {
+    return *temp; 
+  }
 }
 
-ListIter List::last(){
+ListItr List::last(){
   ListItr *temp;
-  temp = new ListIter(tail);
+  temp = new ListItr(tail);
   temp ->moveBackward();
-  if(isPastBeginning()) return NULL;
+  if(temp->isPastBeginning()) return NULL;
   else return *temp;
 }
 
 void List:: insertAtTail(int x){
-  ListNode l = new ListNode;
+  ListNode* l = new ListNode;
   tail->previous ->next = l;
   l->previous = tail->previous;
   l->value = x;
@@ -99,12 +100,12 @@ void List:: insertAtTail(int x){
 }
 
 void List:: insertAfter(int x, ListItr position){
-  ListNode l = new ListNode;
-  position.previous ->next = l;
-  l->previous = position.previous;
+  ListNode* l = new ListNode;
+  position.current->previous ->next = l;
+  l->previous = position.current->previous;
   l->value = x;
-  l->next = position;
-  position.previous = l;
+  l->next = position.current;
+  position.current->previous = l;
   
 }
 
@@ -114,5 +115,5 @@ void List:: insertBefore(int x, ListItr position){
   l->next = position.current->next;
   l->value = x;
   l->previous = position.current;
-  position.next = l;
+  position.current->next = l;
 }

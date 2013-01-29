@@ -1,6 +1,10 @@
 //#include "ListItr.h"
+#include "List.h"
+#include "ListNode.h"
 #include <iostream>
 using namespace std;
+
+class ListNode;
 
 class ListItr {
 

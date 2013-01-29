@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include "ListNode.h"
-#include "ListItr.h"
+#include "ListItr.cpp"
 using namespace std;
 
 // When reading in ListItr.h first, it starts reading in this file

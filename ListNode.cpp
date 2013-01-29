@@ -8,6 +8,12 @@ ListNode::ListNode(){
   previous = NULL;
 }
 
+ListNode::ListNode(int x) {
+  value = x;
+  next = NULL;
+  previous = NULL;
+}
+
 ListNode::~ListNode(){
   if(next !=NULL){
     if(next->next !=NULL){
